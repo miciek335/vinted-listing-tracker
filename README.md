@@ -48,19 +48,18 @@ Telegram Notification
 ### Installation
 
 1. **Clone the repository**
-      https://github.com/miciek335/vinted-listing-tracker.git
-      cd vinted-listing-tracker
-2. **Install dependencies**
-      pip install -r requirements.txt
-      python -m playwright install chromium
-3. **Configure your settings**
+2.       https://github.com/miciek335/vinted-listing-tracker.git
+         cd vinted-listing-tracker
+3. **Install dependencies**
+4.       pip install -r requirements.txt
+         python -m playwright install chromium
+5. **Configure your settings**
    - Create `config.json` based on the example below
    - Add your notification credentials
    - Configure your Vinted searches
 
-4. **Run the monitor**
-
-      python vinted_monitor.py
+6. **Run the monitor**
+7.       python vinted_monitor.py
 
 ## 📋 Configuration
 
