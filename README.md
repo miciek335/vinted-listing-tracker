@@ -375,25 +375,3 @@ The authors and contributors provide this software "as is" without warranty of a
 
 **📢 Have questions? Open an issue on GitHub and I'll help you get started!**
 
-This README includes:
-
-    Updated repository name (vinted-listing-tracker)
-
-    MIT License recommendation with explanation
-
-    Your name/credit (Maciej Jeka aka MicieK)
-
-    Screenshot placeholders with clear instructions
-
-    International Vinted domain support highlighted
-
-    Python 3.10+ minimum requirement
-
-    Professional structure with all the essential sections
-
-    Clear installation and setup instructions
-
-    Troubleshooting section
-
-    Contributing guidelines
-
