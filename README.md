@@ -169,7 +169,7 @@ Each notification method can be independently:
 
 When running, the script provides detailed startup information:
 
-============================================================
+
 🔍 VINTED MONITOR STARTING UP (STEALTH MODE)
 📋 CONFIGURED SEARCHES (3):
 
