@@ -34,14 +34,14 @@ Telegram Notification
 
 ### ⚙️ Flexible Configuration
 - **JSON Configuration**: Easy search management and notification toggle
-- **Customizable Intervals**: Adjust monitoring frequency (default: 15 minutes)
+- **Customizable Intervals**: Adjust monitoring fuency (default: 15 minutes)
 - **Individual Notification Control**: Enable/disable each notification method independently
 - **International Support**: Works with all Vinted domains (vinted.pl, vinted.com, vinted.de, etc.)
 - **Unicode Handling**: Full support for international characters and languages
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Preuisites
 - Python 3.10 or higher
 - Windows 10+ (for Windows Toast notifications)
 
@@ -141,9 +141,10 @@ https://www.vinted.pl/catalog?search_text=pokemon&price_to=200&catalog[]=2994&or
 
 ## 🛠️ Requirements
 
-
 requests>=2.28.0
+
 playwright>=1.44.0
+
 win10toast-click>=0.1.2
 
 
