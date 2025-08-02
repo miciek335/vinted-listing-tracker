@@ -6,11 +6,12 @@
 
 A sophisticated Python script that monitors Vinted searches for new listings and sends instant notifications via Discord, Telegram, and Windows Toast notifications. Features advanced stealth capabilities to avoid detection and includes thumbnail images in all notification types.
 
-![Windows Notification](screenshots/windows-notification.png)
-*Windows Toast notification with clickable thumbnail*
+Windows Notification
 
-![Telegram Notification](screenshots/telegram-notification.png)
-*Telegram notification with product image and details*
+
+Telegram Notification
+<img width="666" height="745" alt="obraz" src="https://github.com/user-attachments/assets/dfb538a3-9062-42d8-8ad1-56874ec1b648" />
+
 
 ## ✨ Features
 
