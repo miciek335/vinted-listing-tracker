@@ -251,11 +251,11 @@ Users are responsible for:
 **Installation Problems**
 If playwright installation fails:
 
-python -m playwright install chromium --force
+      python -m playwright install chromium --force
 If requirements installation fails:
 
-pip install --upgrade pip
-pip install -r requirements.txt
+      pip install --upgrade pip
+      pip install -r requirements.txt
 
 
 **Discord Webhook Errors**
@@ -272,8 +272,8 @@ pip install -r requirements.txt
 
 Reinstall the notification library:
 
-pip uninstall win10toast-click
-pip install win10toast-click
+      pip uninstall win10toast-click
+      pip install win10toast-click
 
 
 **No New Listings Found**
@@ -283,23 +283,24 @@ pip install win10toast-click
 
 ### Debug Mode
 Enable detailed logging by changing the log level in `vinted_monitor.py`:
-logging.basicConfig(level=logging.DEBUG, ...)
+
+      logging.basicConfig(level=logging.DEBUG, ...)
 
 
 ## 📁 Project Structure
 
-vinted-listing-tracker/
-├── vinted_monitor.py # Main monitoring script
-├── config.json # Your configuration file
-├── requirements.txt # Python dependencies
-├── README.md # This documentation
-├── LICENSE # MIT License file
-├── screenshots/ # Directory for documentation images
-│ ├── windows-notification.png
-│ ├── telegram-notification.png
-│ └── console-output.png
-├── seen_listings.json # Auto-generated (stores seen item IDs)
-└── vinted_monitor.log # Auto-generated (application logs)
+      vinted-listing-tracker/
+      ├── vinted_monitor.py # Main monitoring script
+      ├── config.json # Your configuration file
+      ├── requirements.txt # Python dependencies
+      ├── README.md # This documentation
+      ├── LICENSE # MIT License file
+      ├── screenshots/ # Directory for documentation images
+      │ ├── windows-notification.png
+      │ ├── telegram-notification.png
+      │ └── console-output.png
+      ├── seen_listings.json # Auto-generated (stores seen item IDs)
+      └── vinted_monitor.log # Auto-generated (application logs)
 
 
 ## 🤝 Contributing
@@ -341,7 +342,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 👨‍💻 Author
 
-**Maciej Jeka (MicieK)**
+**Maciej J. (MicieK)**
 
 If this project helped you find great deals on Vinted, consider:
 - ⭐ **Starring the repository**
