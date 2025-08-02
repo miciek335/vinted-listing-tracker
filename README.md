@@ -64,37 +64,37 @@ python vinted_monitor.py
 ## 📋 Configuration
 
 ### config.json Example
-{
-"check_interval_minutes": 15,
-"randomization_percent": 10,
-"max_notifications_per_search": 10,
-"notifications": {
-"discord": {
-"enabled": true,
-"webhook_url": "YOUR_DISCORD_WEBHOOK_URL"
-},
-"telegram": {
-"enabled": true,
-"bot_token": "YOUR_BOT_TOKEN",
-"chat_id": "YOUR_CHAT_ID"
-},
-"windows": {
-"enabled": true
-}
-},
-"searches": [
-{
-"name": "Nintendo Games under 100 PLN",
-"url": "https://www.vinted.pl/catalog?search_text=nintendo&price_to=100&order=newest_first",
-"platform": "vinted"
-},
-{
-"name": "Vintage Clothing",
-"url": "https://www.vinted.com/catalog?search_text=vintage&order=newest_first",
-"platform": "vinted"
-}
-]
-}
+      {
+      "check_interval_minutes": 15,
+      "randomization_percent": 10,
+      "max_notifications_per_search": 10,
+      "notifications": {
+      "discord": {
+      "enabled": true,
+      "webhook_url": "YOUR_DISCORD_WEBHOOK_URL"
+      },
+      "telegram": {
+      "enabled": true,
+      "bot_token": "YOUR_BOT_TOKEN",
+      "chat_id": "YOUR_CHAT_ID"
+      },
+      "windows": {
+      "enabled": true
+      }
+      },
+      "searches": [
+      {
+      "name": "Nintendo Games under 100 PLN",
+      "url": "https://www.vinted.pl/catalog?search_text=nintendo&price_to=100&order=newest_first",
+      "platform": "vinted"
+      },
+      {
+      "name": "Vintage Clothing",
+      "url": "https://www.vinted.com/catalog?search_text=vintage&order=newest_first",
+      "platform": "vinted"
+      }
+      ]
+      }
 
 
 ### Setting Up Notifications
