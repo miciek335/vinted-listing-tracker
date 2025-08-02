@@ -10,6 +10,8 @@ Windows Notification
 
 
 Telegram Notification
+
+
 <img width="666" height="745" alt="obraz" src="https://github.com/user-attachments/assets/dfb538a3-9062-42d8-8ad1-56874ec1b648" />
 
 
