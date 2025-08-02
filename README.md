@@ -335,7 +335,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - ✅ **Free to use** for personal and commercial purposes
 - ✅ **Modify and distribute** as you wish
 - ✅ **Private use** allowed
-- ⚠️ **Attribution required** - please credit Maciej Jeka (MicieK) in your projects
+- ⚠️ **Attribution required** - please credit Maciej J. (MicieK) in your projects
 - ❌ **No warranty** - use at your own risk
 
 ## 👨‍💻 Author
