@@ -215,16 +215,14 @@ Simply use the appropriate domain in your search URLs!
 ## 📸 Screenshots
 
 ### Windows Toast Notifications
-![Windows Notification Example](screenshots/windows-notification-example.png)
-*Replace with your Windows notification screenshot*
+Placeholder
 
 ### Telegram Notifications  
-![Telegram Notification Example](screenshots/telegram-notification-example.png)
-*Replace with your Telegram notification screenshot*
+<img width="333" height="363" alt="Telegram Notification" src="https://github.com/user-attachments/assets/dfb538a3-9062-42d8-8ad1-56874ec1b648" />
 
 ### Console Output
-![Console Output](screenshots/console-output.png)
-*Replace with your console output screenshot*
+<img width="1476" height="534" alt="obraz" src="https://github.com/user-attachments/assets/882af2d7-d353-40da-8c5b-abe4e98b6400" />
+
 
 ## 🚨 Important Notes
 
