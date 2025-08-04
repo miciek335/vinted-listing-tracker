@@ -59,7 +59,7 @@ Telegram Notification
    - Configure your Vinted searches
 
 6. **Run the monitor**
-7.       python vinted_monitor.py
+7.       python vinted_monitor.pyw
 
 ## 📋 Configuration
 
@@ -280,7 +280,7 @@ Reinstall the notification library:
 - Wait for actual new listings to be posted on Vinted
 
 ### Debug Mode
-Enable detailed logging by changing the log level in `vinted_monitor.py`:
+Enable detailed logging by changing the log level in `vinted_monitor.pyw`:
 
       logging.basicConfig(level=logging.DEBUG, ...)
 
@@ -288,7 +288,7 @@ Enable detailed logging by changing the log level in `vinted_monitor.py`:
 ## 📁 Project Structure
 
       vinted-listing-tracker/
-      ├── vinted_monitor.py # Main monitoring script
+      ├── vinted_monitor.pyw # Main monitoring script
       ├── config.json # Your configuration file
       ├── requirements.txt # Python dependencies
       ├── README.md # This documentation
