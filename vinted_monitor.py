@@ -503,14 +503,14 @@ class VintedMonitor:
             self.logger.warning(f"Failed to send Telegram notification: {e}")
     
     def send_windows_notification(self, listing: Dict, search_name: str):
-        """Send Windows toast notification with image and clickable URL"""
+        """Send Windows toast notification with image and clickable URL - Enhanced error handling"""
         notifications = self.config.get('notifications', {})
         windows_config = notifications.get('windows', {})
         
         if not windows_config.get('enabled', False):
             return
         
-        if not WIN10TOAST_AVAILABLE or self.toaster is None:  # ← Added self.toaster check
+        if not WIN10TOAST_AVAILABLE or self.toaster is None:
             self.logger.warning("win10toast-click library not installed or toaster not initialized - cannot send Windows notifications")
             return
         
@@ -520,54 +520,90 @@ class VintedMonitor:
             if listing.get('image_url'):
                 image_path = self.download_image_for_notification(listing['image_url'])
             
+            # Validate image file before using it
+            if image_path and not os.path.exists(image_path):
+                self.logger.warning(f"Downloaded image file not found: {image_path}")
+                image_path = None
+            
             # Function to open URL when notification is clicked
             def open_listing_url():
                 try:
                     webbrowser.open(listing['url'])
                     self.safe_log('info', f"Opened Vinted listing URL: {listing['url']}")
                     
-                    # Show confirmation notification with URL preview - FIXED
-                    if self.toaster is not None:  # ← Added None check
-                        self.toaster.show_toast(
-                            title="✅ Opening Vinted Listing",
-                            msg=f"Opening: {listing['url'][:60]}...\n\nItem: {listing['title'][:40]}...",
-                            duration=4,
-                            threaded=True
-                        )
+                    # Show confirmation notification with URL preview - with error handling
+                    try:
+                        if self.toaster is not None:
+                            self.toaster.show_toast(
+                                title="✅ Opening Vinted Listing",
+                                msg=f"Opening: {listing['url'][:60]}...\n\nItem: {listing['title'][:40]}...",
+                                duration=4,
+                                threaded=True
+                            )
+                    except Exception as conf_error:
+                        # Ignore confirmation notification errors
+                        self.logger.debug(f"Confirmation notification failed (ignored): {conf_error}")
+                        
                 except Exception as e:
                     self.safe_log('error', f"Failed to open listing URL: {e}")
             
             # Truncate title for toast notification
             title_text = listing['title'][:80] + "..." if len(listing['title']) > 80 else listing['title']
             
-            # Create clickable notification with image - FIXED
-            if self.toaster is not None:  # ← Added None check
-                self.toaster.show_toast(
-                    title="🔍 New Vinted Listing",
-                    msg=f"{search_name}:\n{title_text}\n\nClick to open listing!",
-                    icon_path=image_path,  # Image thumbnail
-                    duration=12,  # Notification stays for 12 seconds
-                    threaded=True,  # Don't block the main script
-                    callback_on_click=open_listing_url  # Function to run when clicked
-                )
+            # Create clickable notification with image - Enhanced error handling
+            if self.toaster is not None:
+                try:
+                    self.toaster.show_toast(
+                        title="🔍 New Vinted Listing",
+                        msg=f"{search_name}:\n{title_text}\n\nClick to open listing!",
+                        icon_path=image_path,  # Image thumbnail
+                        duration=12,  # Notification stays for 12 seconds
+                        threaded=True,  # Don't block the main script
+                        callback_on_click=open_listing_url  # Function to run when clicked
+                    )
+                    
+                    self.logger.info("Windows toast notification sent successfully (clickable with image)")
+                    
+                except Exception as toast_error:
+                    # Handle specific Windows API errors gracefully
+                    error_msg = str(toast_error).lower()
+                    if any(keyword in error_msg for keyword in ['loadimage', 'wparam', 'shell_notifyicon', 'wndproc']):
+                        self.logger.warning(f"Windows API notification warning (ignored): {toast_error}")
+                        # Try sending notification without image as fallback
+                        try:
+                            if self.toaster is not None:
+                                self.toaster.show_toast(
+                                    title="🔍 New Vinted Listing",
+                                    msg=f"{search_name}:\n{title_text}\n\nClick to open listing!",
+                                    icon_path=None,  # No image
+                                    duration=8,
+                                    threaded=True,
+                                    callback_on_click=open_listing_url
+                                )
+                                self.logger.info("Windows toast notification sent successfully (without image)")
+                        except Exception as fallback_error:
+                            self.logger.warning(f"Windows notification fallback also failed: {fallback_error}")
+                    else:
+                        self.logger.error(f"Unexpected Windows notification error: {toast_error}")
                 
-                self.logger.info("Windows toast notification sent successfully (clickable with image)")
-                
-                # Clean up temp image file after a delay
+                # Enhanced cleanup with longer delay and better error handling
                 if image_path:
                     def cleanup_temp_file():
-                        time.sleep(15)  # Wait 15 seconds then clean up
+                        time.sleep(25)  # Increased delay from 15 to 25 seconds
                         try:
                             if os.path.exists(image_path):
                                 os.remove(image_path)
-                        except:
-                            pass
+                                self.logger.debug(f"Cleaned up temp image: {image_path}")
+                        except Exception as cleanup_error:
+                            self.logger.debug(f"Temp file cleanup failed (ignored): {cleanup_error}")
                     
                     import threading
                     threading.Thread(target=cleanup_temp_file, daemon=True).start()
             
         except Exception as e:
-            self.logger.warning(f"Failed to send Windows notification: {e}")
+            # Catch-all for any other unexpected errors
+            self.logger.warning(f"Windows notification method failed: {e}")
+
     
     def send_all_notifications(self, listing: Dict, search_name: str):
         """Send notifications via all enabled methods"""
